@@ -131,6 +131,11 @@ Langkah Aksi
 5 Masukkan delay (0.1-3 detik)
 6 Konfirmasi y dan tunggu
 
+⚠️ Tips Biar Gak Kena Rate Limit:
+
+· Pake delay 0.5 - 1.0 detik (jangan 0.1!)
+· Tools ini udah pake delay RANDOM otomatis biar aman
+
 🎵 Mode Music Player
 
 Langkah Aksi
@@ -181,16 +186,21 @@ Langkah Aksi
 
 ---
 
-🛠️ Troubleshooting
+🛠️ Troubleshooting (KALO ERROR)
 
 Masalah Solusi (PASTI WORK)
 command not found pkg install [nama] -y
-ModuleNotFoundError pip install [nama]
+ModuleNotFoundError: No module named 'requests' pip install requests
+ModuleNotFoundError: No module named 'colorama' pip install colorama
+mpv: command not found pkg install mpv -y
+yt-dlp: command not found pkg install yt-dlp -y
 Permission denied termux-setup-storage
 No such file or directory cd SpamNGL dulu
 untracked working tree files git fetch --all && git reset --hard origin/main
 Chat tidak terkirim Cek koneksi internet
 Music tidak bisa diputar pkg install mpv -y
+❌ USERNAME SALAH Username TANPA @ dan TANPA https://
+⏳ RATE LIMIT Delay MINIMAL 0.5 detik (jangan 0.1!)
 
 ---
 
@@ -214,6 +224,7 @@ Fitur Keterangan
 ✅ Full Durasi Download musik full, bukan preview
 ✅ Auto Install Cek & install yt-dlp/mpv otomatis
 ✅ History Music Riwayat download tersimpan
+✅ Random Delay Otomatis acak delay biar gak kena rate limit
 
 ---
 
@@ -248,6 +259,6 @@ Gunakan dengan tanggung jawab sendiri!
   <br>
   <b>⭐ Jangan lupa kasih bintang kalo suka! ⭐</b>
 </div>
-```
+
 
 ---
