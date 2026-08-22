@@ -43,7 +43,7 @@
 
 ---
 
-## 🚀 Cara Install (Step by Step)
+## 🚀 Cara Install (Step by Step - 100% WORK)
 
 ### STEP 1 - Setup Storage
 ```bash
@@ -89,7 +89,7 @@ python SpamNGL.py
 
 ---
 
-⚡ Cara Run (Setelah Install)
+⚡ Cara Run (Setelah Install - PASTI JALAN)
 
 ```bash
 cd SpamNGL && python SpamNGL.py
@@ -97,7 +97,7 @@ cd SpamNGL && python SpamNGL.py
 
 ---
 
-🔄 Cara Update (Jika Ada Versi Baru)
+🔄 Cara Update (Jika Ada Versi Baru - PASTI JALAN)
 
 ```bash
 cd SpamNGL && git pull && python SpamNGL.py
@@ -106,7 +106,7 @@ cd SpamNGL && git pull && python SpamNGL.py
 💡 Catatan: Kalo muncul error untracked working tree files, jalankan:
 
 ```bash
-cd SpamNGL && rm -rf SpamNGL.py && git pull && python SpamNGL.py
+cd SpamNGL && git fetch --all && git reset --hard origin/main && python SpamNGL.py
 ```
 
 ---
@@ -183,14 +183,14 @@ Langkah Aksi
 
 🛠️ Troubleshooting
 
-Masalah Solusi
+Masalah Solusi (PASTI WORK)
 command not found pkg install [nama] -y
 ModuleNotFoundError pip install [nama]
 Permission denied termux-setup-storage
-No such file or directory Pastikan di folder SpamNGL
-untracked working tree files rm -rf SpamNGL.py && git pull
-Chat tidak terkirim Cek koneksi internet dan token bot
-Music tidak bisa diputar Install mpv: pkg install mpv -y
+No such file or directory cd SpamNGL dulu
+untracked working tree files git fetch --all && git reset --hard origin/main
+Chat tidak terkirim Cek koneksi internet
+Music tidak bisa diputar pkg install mpv -y
 
 ---
 
