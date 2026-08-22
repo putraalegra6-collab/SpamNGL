@@ -191,6 +191,10 @@ def ngl_spam():
         except:
             print(f"{Fore.RED}[!] Harus angka!")
     
+    # 🔥 RANDOM DELAY - biar aman dari rate limit
+    min_delay = delay
+    max_delay = min(delay + 0.5, 3.0)
+    
     print(f"\n{Fore.RED}[!] PERINGATAN: Ini untuk iseng-iseng!")
     confirm = input(f"{Fore.YELLOW}[?] Lanjut? (y/n): {Fore.WHITE}").lower()
     if confirm != 'y':
@@ -202,7 +206,7 @@ def ngl_spam():
     
     print(f"\n{Fore.GREEN}[+] Target: @{username}")
     print(f"{Fore.GREEN}[+] Jumlah: {count}")
-    print(f"{Fore.GREEN}[+] Delay: {delay}s")
+    print(f"{Fore.GREEN}[+] Delay: {delay}s (Random {min_delay:.1f}-{max_delay:.1f}s)")
     print(f"{Fore.MAGENTA}{'='*70}\n")
     
     success = 0
@@ -222,7 +226,8 @@ def ngl_spam():
             print()
             
             if i < count:
-                time.sleep(delay)
+                # 🔥 PAKE RANDOM DELAY
+                time.sleep(random.uniform(min_delay, max_delay))
                 
         except KeyboardInterrupt:
             print(f"\n{Fore.YELLOW}[!] Dihentikan oleh user!")
