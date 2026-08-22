@@ -72,13 +72,13 @@ pip install requests colorama
 STEP 5 - Clone Repository
 
 ```bash
-git clone https://github.com/putraalegra6-collab/SpamNGL.git
+cd SpamNGL
 ```
 
 STEP 6 - Masuk Folder
 
 ```bash
-cd SpamNGL
+git clone https://github.com/putraalegra6-collab/SpamNGL.git
 ```
 
 STEP 7 - Jalankan Tools
