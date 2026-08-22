@@ -15,78 +15,74 @@
 
 ---
 
-## 📌 **Tentang**
+## 📌 Tentang
 
-**egaaX NglSpam** adalah tools multi-fungsi yang dirancang untuk Termux, menggabungkan dua fitur utama dalam satu script:
+**egaaX NglSpam** adalah tools multi-fungsi untuk Termux yang menggabungkan:
 
 | Fitur | Keterangan |
 |-------|------------|
-| 🔥 **NGL Spammer** | Mengirim pesan secara massal ke akun NGL. |
-| 🎵 **Music Player** | Mencari, mengunduh, dan memutar lagu secara offline. |
-| 📜 **History Music** | Menyimpan riwayat unduhan lagu secara otomatis. |
-| 🎨 **Animasi Keren** | Dilengkapi dengan spinner, progress bar, dan warna dinamis. |
-| 💾 **Offline Play** | Memutar lagu yang sudah diunduh tanpa koneksi internet. |
+| 🔥 **NGL Spammer** | Kirim pesan spam massal ke akun NGL |
+| 🎵 **Music Player** | Cari, download, & putar lagu offline |
+| 📜 **History Music** | Riwayat download tersimpan otomatis |
+| 🎨 **Animasi Keren** | Spinner, progress bar, warna dinamis |
+| 💾 **Offline Play** | Putar lagu tanpa koneksi internet |
 
-> ⚠️ **Disclaimer:** Tools ini dibuat untuk tujuan **edukasi dan iseng-iseng**. Harap gunakan dengan bijak dan tanggung jawab sendiri.
+> ⚠️ **Disclaimer:** Tools ini untuk **edukasi & iseng-iseng**. Gunakan dengan bijak!
 
 ---
 
-## 📦 **Persyaratan**
-
-Pastikan Termux kamu sudah terinstall paket-paket berikut:
+## 📦 Persyaratan
 
 | Package | Fungsi |
 |---------|--------|
-| `python` | Bahasa pemrograman utama. |
-| `git` | Untuk meng-clone repository. |
-| `mpv` | Pemutar musik. |
-| `yt-dlp` | Untuk mengunduh musik dari YouTube. |
-| `requests` | Library untuk HTTP requests. |
-| `colorama` | Library untuk pewarnaan teks di terminal. |
+| `python` | Bahasa pemrograman |
+| `git` | Clone repository |
+| `mpv` | Pemutar musik |
+| `yt-dlp` | Download musik dari YouTube |
+| `requests` | Library HTTP requests |
+| `colorama` | Pewarnaan terminal |
 
 ---
 
-## 🚀 **Cara Install (Step by Step)**
+## 🚀 Cara Install (Step by Step)
 
-Ikuti langkah-langkah berikut untuk menginstall tools ini di Termux:
-
-### Langkah 1: Setup Storage
+### STEP 1 - Setup Storage
 ```bash
 termux-setup-storage
 ```
 
-Langkah 2: Update & Upgrade Paket
+STEP 2 - Update & Upgrade
 
 ```bash
 pkg update -y
 pkg upgrade -y
 ```
 
-Langkah 3: Install Paket yang Dibutuhkan
+STEP 3 - Install Package
 
 ```bash
 pkg install python git mpv yt-dlp -y
 ```
 
-Langkah 4: Install Modul Python
+STEP 4 - Install Modul Python
 
 ```bash
 pip install requests colorama
 ```
 
-Langkah 5: Clone Repository
+STEP 5 - Clone Repository
 
 ```bash
 git clone https://github.com/putraalegra6-collab/SpamNGL.git
 ```
 
-Langkah 6: Masuk ke Folder
+STEP 6 - Masuk Folder
 
 ```bash
 cd SpamNGL
 ```
 
-Langkah 7: Jalankan Tools
+STEP 7 - Jalankan Tools
 
 ```bash
 python SpamNGL.py
@@ -94,14 +90,46 @@ python SpamNGL.py
 
 ---
 
-⚡ Cara Update
+⚡ Cara Run (Setelah Install)
 
-Jika ada pembaruan dari repository, jalankan perintah berikut:
+Cukup 2 langkah:
 
 ```bash
-cd ~/SpamNGL
+cd SpamNGL
+python SpamNGL.py
+```
+
+Atau langsung satu baris:
+
+```bash
+cd SpamNGL && python SpamNGL.py
+```
+
+---
+
+🔄 Cara Update (Jika Ada Versi Baru)
+
+```bash
+cd SpamNGL
 git pull
 python SpamNGL.py
+```
+
+---
+
+💀 Reset Total (Install Ulang)
+
+```bash
+rm -rf SpamNGL
+git clone https://github.com/putraalegra6-collab/SpamNGL.git
+cd SpamNGL
+python SpamNGL.py
+```
+
+Atau satu baris:
+
+```bash
+rm -rf SpamNGL && git clone https://github.com/putraalegra6-collab/SpamNGL.git && cd SpamNGL && python SpamNGL.py
 ```
 
 ---
@@ -110,31 +138,27 @@ python SpamNGL.py
 
 🔥 Mode Spam NGL
 
-1. Pada menu utama, pilih angka [1].
-2. Masukkan username atau link NGL target (contoh: username atau https://ngl.link/username).
-3. Masukkan pesan yang ingin dikirim.
-4. Tentukan jumlah spam (1-1000).
-5. Atur jeda pengiriman (delay) antara 0.1 - 3 detik.
-6. Konfirmasi dengan mengetik y dan tunggu proses hingga selesai.
+Langkah Aksi
+1 Pilih menu [1]
+2 Masukkan username/link NGL
+3 Masukkan pesan spam
+4 Masukkan jumlah spam (1-1000)
+5 Masukkan delay (0.1-3 detik)
+6 Konfirmasi y dan tunggu
 
 🎵 Mode Music Player
 
-1. Pada menu utama, pilih angka [2].
-2. Pilih opsi yang tersedia:
-   · [1] Cari & Download Lagu
-   · [2] Lihat History Download
-   · [3] Hapus Semua Lagu
-3. Jika memilih [1]:
-   · Masukkan judul lagu yang ingin dicari.
-   · Pilih nomor lagu dari daftar hasil pencarian.
-   · Tunggu proses unduhan selesai.
-   · Pilih y untuk memutar lagu secara langsung.
+Langkah Aksi
+1 Pilih menu [2]
+2 Pilih opsi: [1] Cari Lagu, [2] History, [3] Hapus
+3 Jika pilih [1], masukkan judul lagu
+4 Pilih nomor lagu dari daftar
+5 Tunggu download selesai
+6 Pilih y untuk putar sekarang
 
 ---
 
 📸 Tampilan Menu
-
-Saat pertama kali dijalankan, kamu akan melihat tampilan seperti ini:
 
 ```
 ╔══════════════════════════════════════════════════════════════════╗
@@ -164,14 +188,13 @@ Saat pertama kali dijalankan, kamu akan melihat tampilan seperti ini:
 
 🛠️ Troubleshooting
 
-Jika mengalami masalah, berikut beberapa solusi umum:
-
 Masalah Solusi
-command not found Install paket yang diperlukan: pkg install [nama_paket] -y
-ModuleNotFoundError Install modul Python: pip install [nama_modul]
-Permission denied Jalankan termux-setup-storage untuk memberi izin akses storage.
-No such file or directory Pastikan kamu berada di folder yang benar: cd SpamNGL
-Already exists Folder sudah ada, langsung masuk: cd SpamNGL lalu jalankan python SpamNGL.py
+command not found pkg install [nama] -y
+ModuleNotFoundError pip install [nama]
+Permission denied termux-setup-storage
+No such file or directory Pastikan di folder SpamNGL
+Not a directory rm -rf SpamNGL lalu clone ulang
+Already exists Folder sudah ada, langsung cd SpamNGL
 
 ---
 
@@ -181,8 +204,8 @@ Already exists Folder sudah ada, langsung masuk: cd SpamNGL lalu jalankan python
 SpamNGL/
 ├── SpamNGL.py            # Script utama
 ├── README.md             # Dokumentasi
-└── music_downloads/      # Folder untuk menyimpan lagu (auto dibuat)
-    └── history.json      # Riwayat unduhan (auto dibuat)
+└── music_downloads/      # Folder lagu (auto dibuat)
+    └── history.json      # Riwayat download (auto dibuat)
 ```
 
 ---
@@ -207,7 +230,7 @@ SpamNGL/
 
 ```
 Copyright © 2024 Alegra Egaa
-Script ini dibuat untuk tujuan edukasi dan iseng-iseng.
+Script ini untuk tujuan edukasi dan iseng-iseng.
 Gunakan dengan tanggung jawab sendiri!
 ```
 
@@ -218,6 +241,6 @@ Gunakan dengan tanggung jawab sendiri!
   <br>
   <b>⭐ Jangan lupa kasih bintang kalo suka! ⭐</b>
 </div>
-
+```
 
 ---
