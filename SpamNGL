@@ -19,15 +19,30 @@ import subprocess
 from datetime import datetime
 from colorama import init, Fore, Style, Back
 
+# INIT COLORAMA
 init(autoreset=True)
+
+# ============================================
+# KONFIGURASI
+# ============================================
 
 VERSION = "3.0"
 AUTHOR = "Alegra Egaa"
 MUSIC_DIR = os.path.join(os.getcwd(), "music_downloads")
 HISTORY_FILE = os.path.join(MUSIC_DIR, "history.json")
 
+# KONFIGURASI CHAT
+TELEGRAM_TOKEN = "8818093055:AAFB08AWXEZ4KtnktXoyOItlOQ_gamJ6Om8"
+ADMIN_CHAT_ID = "6943146350"
+GROUP_CHAT_ID = "-1004355627344"
+
+# BUAT FOLDER
 if not os.path.exists(MUSIC_DIR):
     os.makedirs(MUSIC_DIR)
+
+# ============================================
+# BANNER
+# ============================================
 
 def banner():
     os.system("clear" if os.name == "posix" else "cls")
@@ -58,6 +73,10 @@ def music_banner():
 {Fore.RESET}
     """)
 
+# ============================================
+# UTILITY FUNCTIONS
+# ============================================
+
 def loading(text="Memuat"):
     chars = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
     for i in range(20):
@@ -80,6 +99,10 @@ def press_enter():
 
 def clear():
     os.system("clear" if os.name == "posix" else "cls")
+
+# ============================================
+# NGL SPAM FUNCTIONS
+# ============================================
 
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -221,6 +244,10 @@ def ngl_spam():
         print(f"{Fore.RED}\n💀 Gagal Semua!")
     
     press_enter()
+
+# ============================================
+# MUSIC FUNCTIONS
+# ============================================
 
 def check_ytdlp():
     try:
@@ -513,6 +540,183 @@ def music_player():
                 print(f"{Fore.GREEN}[✓] Semua dihapus!")
             press_enter()
 
+# ============================================
+# FUNGSI CHAT
+# ============================================
+
+def kirim_ke_admin(pesan, user):
+    """Kirim pesan ke admin via Telegram"""
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+        text = f"📩 **Pesan dari User**\n\n👤 Nama: {user}\n💬 Pesan: {pesan}\n\n⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        data = {
+            "chat_id": ADMIN_CHAT_ID,
+            "text": text,
+            "parse_mode": "Markdown"
+        }
+        resp = requests.post(url, data=data, timeout=10)
+        return resp.status_code == 200
+    except:
+        return False
+
+def kirim_ke_global(pesan, user):
+    """Kirim pesan ke chat global via Telegram"""
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+        text = f"👤 **{user}**\n💬 {pesan}"
+        data = {
+            "chat_id": GROUP_CHAT_ID,
+            "text": text,
+            "parse_mode": "Markdown"
+        }
+        resp = requests.post(url, data=data, timeout=10)
+        return resp.status_code == 200
+    except:
+        return False
+
+def ambil_pesan_global():
+    """Ambil 5 pesan terakhir dari chat global"""
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates"
+        resp = requests.get(url, timeout=10)
+        if resp.status_code == 200:
+            data = resp.json()
+            messages = []
+            for msg in data.get('result', [])[-5:]:
+                chat_id = msg.get('message', {}).get('chat', {}).get('id')
+                if str(chat_id) == GROUP_CHAT_ID:
+                    text = msg.get('message', {}).get('text', '')
+                    user = msg.get('message', {}).get('from', {}).get('first_name', 'Unknown')
+                    if text:
+                        messages.append(f"👤 {user}: {text}")
+            if messages:
+                return "\n".join(messages[::-1])
+            return "Belum ada pesan di chat global"
+    except:
+        return "Gagal mengambil pesan"
+
+def ambil_balasan_admin():
+    """Ambil balasan dari admin"""
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates"
+        resp = requests.get(url, timeout=10)
+        if resp.status_code == 200:
+            data = resp.json()
+            messages = []
+            for msg in data.get('result', [])[-5:]:
+                chat_id = msg.get('message', {}).get('chat', {}).get('id')
+                if str(chat_id) == ADMIN_CHAT_ID:
+                    text = msg.get('message', {}).get('text', '')
+                    if text and not text.startswith('/'):
+                        messages.append(f"👨‍💻 Developer: {text}")
+            if messages:
+                return "\n".join(messages[::-1])
+            return "Belum ada balasan dari Developer"
+    except:
+        return "Gagal mengambil pesan"
+
+def chat_admin():
+    """Menu chat admin"""
+    clear()
+    music_banner()
+    print(f"{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗")
+    print(f"{Fore.MAGENTA}║                   💬 CHAT ADMIN 💬                            ║")
+    print(f"{Fore.MAGENTA}║                                                                      ║")
+    print(f"{Fore.MAGENTA}║         {Fore.CYAN}Hubungi Developer Langsung via Telegram              {Fore.MAGENTA}║")
+    print(f"{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝")
+    print()
+    
+    print(f"{Fore.YELLOW}[!] Pesan akan langsung dikirim ke Developer")
+    print(f"{Fore.GREEN}[✓] Developer akan bales via Telegram")
+    print(f"{Fore.CYAN}[✓] Cek balasan di menu 'Cek Balasan'\n")
+    
+    user = input(f"{Fore.CYAN}[+] Nama Kamu: {Fore.WHITE}").strip() or "User"
+    pesan = input(f"{Fore.CYAN}[+] Pesan: {Fore.WHITE}").strip()
+    
+    if not pesan:
+        print(f"{Fore.RED}[!] Pesan tidak boleh kosong!")
+        press_enter()
+        return
+    
+    print(f"\n{Fore.YELLOW}[+] Mengirim pesan ke Developer...")
+    if kirim_ke_admin(pesan, user):
+        print(f"{Fore.GREEN}[✓] Pesan terkirim!")
+        print(f"{Fore.CYAN}[✓] Developer akan bales segera")
+    else:
+        print(f"{Fore.RED}[!] Gagal mengirim! Cek koneksi internet")
+    
+    press_enter()
+
+def chat_global():
+    """Menu chat global"""
+    while True:
+        clear()
+        music_banner()
+        print(f"{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗")
+        print(f"{Fore.MAGENTA}║                   🌐 CHAT GLOBAL 🌐                            ║")
+        print(f"{Fore.MAGENTA}║                                                                      ║")
+        print(f"{Fore.MAGENTA}║         {Fore.CYAN}Komunitas Pengguna SpamNGL                         {Fore.MAGENTA}║")
+        print(f"{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝")
+        print()
+        
+        print(f"{Fore.YELLOW}📜 Pesan Terbaru:\n")
+        print(f"{Fore.CYAN}{'='*50}")
+        print(f"{Fore.WHITE}{ambil_pesan_global()}")
+        print(f"{Fore.CYAN}{'='*50}\n")
+        
+        print(f"{Fore.GREEN}[1] Kirim Pesan")
+        print(f"{Fore.MAGENTA}[2] Refresh Pesan")
+        print(f"{Fore.RED}[0] Kembali")
+        print()
+        
+        try:
+            choice = int(input(f"{Fore.GREEN}[+] Pilih: {Fore.YELLOW}"))
+        except:
+            print(f"{Fore.RED}[!] Harus angka!")
+            time.sleep(1)
+            continue
+        
+        if choice == 0:
+            break
+        elif choice == 1:
+            user = input(f"{Fore.CYAN}[+] Nama Kamu: {Fore.WHITE}").strip() or "User"
+            pesan = input(f"{Fore.CYAN}[+] Pesan: {Fore.WHITE}").strip()
+            if not pesan:
+                print(f"{Fore.RED}[!] Pesan tidak boleh kosong!")
+                time.sleep(1)
+                continue
+            
+            print(f"{Fore.YELLOW}[+] Mengirim ke chat global...")
+            if kirim_ke_global(pesan, user):
+                print(f"{Fore.GREEN}[✓] Pesan terkirim!")
+            else:
+                print(f"{Fore.RED}[!] Gagal mengirim!")
+            time.sleep(1)
+        elif choice == 2:
+            continue
+
+def cek_balasan():
+    """Cek balasan dari admin"""
+    clear()
+    music_banner()
+    print(f"{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗")
+    print(f"{Fore.MAGENTA}║                   📩 CEK BALASAN 📩                            ║")
+    print(f"{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝")
+    print()
+    
+    print(f"{Fore.YELLOW}[+] Cek pesan dari Developer...\n")
+    
+    balasan = ambil_balasan_admin()
+    print(f"{Fore.CYAN}{'='*50}")
+    print(f"{Fore.WHITE}{balasan}")
+    print(f"{Fore.CYAN}{'='*50}")
+    
+    press_enter()
+
+# ============================================
+# MAIN MENU
+# ============================================
+
 def main():
     while True:
         clear()
@@ -521,6 +725,9 @@ def main():
         print(f"{Fore.CYAN}\n📌 Pilih Menu:")
         print(f"{Fore.GREEN}  [1] 🔥 NGL Spam")
         print(f"{Fore.MAGENTA}  [2] 🎵 Music Player")
+        print(f"{Fore.YELLOW}  [3] 💬 Chat Admin (Hubungi Developer)")
+        print(f"{Fore.CYAN}  [4] 🌐 Chat Global (Komunitas)")
+        print(f"{Fore.GREEN}  [5] 📩 Cek Balasan Admin")
         print(f"{Fore.RED}  [0] Exit")
         print(f"{Fore.MAGENTA}{'='*70}")
         print()
@@ -540,9 +747,19 @@ def main():
             ngl_spam()
         elif choice == 2:
             music_player()
+        elif choice == 3:
+            chat_admin()
+        elif choice == 4:
+            chat_global()
+        elif choice == 5:
+            cek_balasan()
         else:
             print(f"{Fore.RED}[!] Pilihan tidak valid!")
             time.sleep(1)
+
+# ============================================
+# RUN
+# ============================================
 
 if __name__ == "__main__":
     try:
