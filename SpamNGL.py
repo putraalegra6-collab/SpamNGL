@@ -35,10 +35,6 @@ HISTORY_FILE = os.path.join(MUSIC_DIR, "history.json")
 TELEGRAM_TOKEN = "8818093055:AAH-lPbkSWASN2KyB2a2fUkffiiaKnSLagE"
 ADMIN_CHAT_ID = "6943146350"
 
-# KONFIGURASI CHAT GLOBAL (JSONBIN)
-JSONBIN_API_KEY = "$2a$10$GrZ0fQcRSKwXAnLyA0gea.W4UU9Q5yc8ayVgq1PBPc5jTF75iW1bi"
-JSONBIN_BIN_ID = "67f8b1ac8561e97a50efecf8"  # GW BIKININ BIN BARU
-
 # BUAT FOLDER
 if not os.path.exists(MUSIC_DIR):
     os.makedirs(MUSIC_DIR)
@@ -614,107 +610,6 @@ def chat_admin():
     
     press_enter()
 
-# ============================================
-# CHAT GLOBAL (JSONBIN - DI TERMUX)
-# ============================================
-
-def ambil_pesan_global():
-    """Ambil semua pesan dari JSONBin"""
-    try:
-        url = f"https://api.jsonbin.io/v3/b/{JSONBIN_BIN_ID}/latest"
-        headers = {"X-Master-Key": JSONBIN_API_KEY}
-        resp = requests.get(url, headers=headers, timeout=10)
-        if resp.status_code == 200:
-            data = resp.json()
-            return data.get("record", {}).get("messages", [])
-        return []
-    except Exception as e:
-        return []
-
-def simpan_pesan_global(user, pesan):
-    """Simpan pesan ke JSONBin"""
-    try:
-        # Ambil pesan lama
-        messages = ambil_pesan_global()
-        
-        # Tambah pesan baru
-        messages.append({
-            "user": user,
-            "pesan": pesan,
-            "waktu": datetime.now().strftime("%H:%M:%S")
-        })
-        
-        # Simpan ke JSONBin (hanya 50 pesan terakhir)
-        url = f"https://api.jsonbin.io/v3/b/{JSONBIN_BIN_ID}"
-        headers = {
-            "X-Master-Key": JSONBIN_API_KEY,
-            "Content-Type": "application/json"
-        }
-        data = {"messages": messages[-50:]}
-        resp = requests.put(url, json=data, headers=headers, timeout=10)
-        return resp.status_code == 200
-    except Exception as e:
-        return False
-
-def chat_global():
-    """Menu chat global di Termux"""
-    while True:
-        clear()
-        music_banner()
-        print(f"{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗")
-        print(f"{Fore.MAGENTA}║                   🌐 CHAT GLOBAL 🌐                            ║")
-        print(f"{Fore.MAGENTA}║                                                                      ║")
-        print(f"{Fore.MAGENTA}║         {Fore.CYAN}Komunitas Pengguna SpamNGL                         {Fore.MAGENTA}║")
-        print(f"{Fore.MAGENTA}║         {Fore.GREEN}💬 Chat Langsung di Termux! 💬                     {Fore.MAGENTA}║")
-        print(f"{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝")
-        print()
-        
-        # Tampilkan pesan
-        print(f"{Fore.YELLOW}📜 Pesan Terbaru:\n")
-        print(f"{Fore.CYAN}{'='*55}")
-        messages = ambil_pesan_global()
-        if messages:
-            for msg in messages[-10:]:
-                print(f"{Fore.WHITE}[{msg.get('waktu', '')}] {Fore.GREEN}{msg.get('user', '')}: {Fore.WHITE}{msg.get('pesan', '')}")
-        else:
-            print(f"{Fore.YELLOW}Belum ada pesan. Jadi yang pertama!")
-        print(f"{Fore.CYAN}{'='*55}\n")
-        
-        print(f"{Fore.GREEN}[1] Kirim Pesan")
-        print(f"{Fore.MAGENTA}[2] Refresh")
-        print(f"{Fore.RED}[0] Kembali")
-        print()
-        
-        try:
-            choice = int(input(f"{Fore.GREEN}[+] Pilih: {Fore.YELLOW}"))
-        except:
-            print(f"{Fore.RED}[!] Harus angka!")
-            time.sleep(1)
-            continue
-        
-        if choice == 0:
-            break
-        elif choice == 1:
-            user = input(f"{Fore.CYAN}[+] Nama Kamu: {Fore.WHITE}").strip() or "User"
-            pesan = input(f"{Fore.CYAN}[+] Pesan: {Fore.WHITE}").strip()
-            if not pesan:
-                print(f"{Fore.RED}[!] Pesan tidak boleh kosong!")
-                time.sleep(1)
-                continue
-            
-            print(f"{Fore.YELLOW}[+] Mengirim...")
-            if simpan_pesan_global(user, pesan):
-                print(f"{Fore.GREEN}[✓] Pesan terkirim! Semua user bisa lihat!")
-            else:
-                print(f"{Fore.RED}[!] Gagal mengirim! Cek koneksi")
-            time.sleep(1)
-        elif choice == 2:
-            continue
-
-# ============================================
-# CEK BALASAN ADMIN
-# ============================================
-
 def cek_balasan():
     """Cek balasan dari admin"""
     clear()
@@ -746,8 +641,7 @@ def main():
         print(f"{Fore.GREEN}  [1] 🔥 NGL Spam")
         print(f"{Fore.MAGENTA}  [2] 🎵 Music Player")
         print(f"{Fore.YELLOW}  [3] 💬 Chat Admin (Hubungi Developer)")
-        print(f"{Fore.CYAN}  [4] 🌐 Chat Global (Komunitas Termux)")
-        print(f"{Fore.GREEN}  [5] 📩 Cek Balasan Admin")
+        print(f"{Fore.GREEN}  [4] 📩 Cek Balasan Admin")
         print(f"{Fore.RED}  [0] Exit")
         print(f"{Fore.MAGENTA}{'='*70}")
         print()
@@ -770,8 +664,6 @@ def main():
         elif choice == 3:
             chat_admin()
         elif choice == 4:
-            chat_global()
-        elif choice == 5:
             cek_balasan()
         else:
             print(f"{Fore.RED}[!] Pilihan tidak valid!")
