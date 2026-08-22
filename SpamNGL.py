@@ -40,132 +40,40 @@ if not os.path.exists(MUSIC_DIR):
     os.makedirs(MUSIC_DIR)
 
 # ============================================
-# BANNER KECE + ASCII ART
+# BANNER SIMPLE (1 AJA)
 # ============================================
 
 def banner():
     os.system("clear" if os.name == "posix" else "cls")
     print(f"""
-{Fore.CYAN}╔══════════════════════════════════════════════════════════════════╗
-{Fore.CYAN}║                                                                      ║
-{Fore.CYAN}║     {Fore.YELLOW}███████╗ ██████╗  █████╗  █████╗ ██╗  ██╗          {Fore.CYAN}║
-{Fore.CYAN}║     {Fore.YELLOW}██╔════╝██╔════╝ ██╔══██╗██╔══██╗╚██╗██╔╝          {Fore.CYAN}║
-{Fore.CYAN}║     {Fore.YELLOW}█████╗  ██║  ███╗███████║███████║ ╚███╔╝           {Fore.CYAN}║
-{Fore.CYAN}║     {Fore.YELLOW}██╔══╝  ██║   ██║██╔══██║██╔══██║ ██╔██╗           {Fore.CYAN}║
-{Fore.CYAN}║     {Fore.YELLOW}███████╗╚██████╔╝██║  ██║██║  ██║██╔╝ ██╗          {Fore.CYAN}║
-{Fore.CYAN}║     {Fore.YELLOW}╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝          {Fore.CYAN}║
-{Fore.CYAN}║                                                                      ║
-{Fore.CYAN}║         {Fore.MAGENTA}💫 egaaX NglSpam V{VERSION} 💫                    {Fore.CYAN}║
-{Fore.CYAN}║           {Fore.GREEN}Script By : {AUTHOR}                            {Fore.CYAN}║
-{Fore.CYAN}║         {Fore.RED}⚠️  Gunakan Dengan Bijak! ⚠️                       {Fore.CYAN}║
-{Fore.CYAN}╠══════════════════════════════════════════════════════════════════╣
-{Fore.CYAN}║                                                                      ║
-{Fore.CYAN}║  {Fore.WHITE}::⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠛⠋⠉⠙⠻⠿⠿⠿                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⠄⠹                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠄⠄⠄⣰⣧⡀⠄⠄⠄⠄⠈                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠄⠰⠼⢯⣿⣿⣦⣄⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠄⠸⠤⠕⠛⠙⠷⣿⡆⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣿⣿⡟⠄⠄⠄⠄⠄⣄⠄⢀⠄⠄⢀⣤⣾                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⠿⣛⣡⣄⣀⠄⠠⢴⣿⣿⡿⣄⣴⣿⣿⣿                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⡏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣩                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⢃⣿⣿⢟⣿⣿⣿⣿⣿⣮⢫⣿⣿⣿⣿⣿⣟                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⡿⣸⠟⣵⣿⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⡇⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣭⣍⠛⠿⠄⢰⠋⡉⠹⣿⣿⣿⣿⣿⣿⠙⣿⣿⣿⣿⣿⣿                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠻⣿⡆⠄⣤⠈⢣⣈⣠⣿⣿⣿⣿⣿⠏⣄⠻⣿⣿⣿⣿                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⡀⠈⢿⠄⣿⡇⠄⠙⠿⣿⡿⠿⢋⣥⣾⣿⣷⣌⠻⢿⣿                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠛⠳⠄⢠⣿⠇⠄⣷⡑⢶⣶⢿⣿⣿                        {Fore.CYAN}║
-{Fore.CYAN}╠══════════════════════════════════════════════════════════════════╣
-{Fore.CYAN}║                                                                      ║
-{Fore.CYAN}║  {Fore.WHITE}:::⣿⣿⣿⣿⠛⠛⠉⠄⠁⠄⠄⠉⠛⢿⣿⣿⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⡟⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣿⣿⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⡇⠄⠄⠄⠐⠄⠄⠄⠄⠄⠄⠄⠠⣿⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⡇⠄⢀⡀⠠⠃⡐⡀⠠⣶⠄⠄⢀⣿⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣶⠄⠰⣤⣕⣿⣾⡇⠄⢛⠃⠄⢈⣿⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⡇⢀⣻⠟⣻⣿⡇⠄⠧⠄⢀⣾⣿⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣟⢸⣻⣭⡙⢄⢀⠄⠄⠄⠈⢹⣯⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣭⣿⣿⣿⣧⢸⠄⠄⠄⠄⠄⠈⢸⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣼⣿⣿⣿⣽⠘⡄⠄⠄⠄⠄⢀⠸⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⡿⣿⣳⣿⣿⣿⣿⣿⠄⠓⠦⠤⠤⠤⠼⢸⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⡹⣧⣿⣿⣿⠿⣿⣿⣿⣿⣿⣿⣿⢇⣓⣾⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⡞⣸⣿⣿⢏⣼⣶⣶⣶⣶⣤⣶⡤⠐⣿⣿⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣯⣽⣛⠅⣾⣿⣿⣿⣿⣿⡽⣿⣧⡸⢿⣿⣿⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⡷⠹⠛⠉⠁⠄⠄⠄⠄⠄⠄⠐⠛⠻⣿⣿⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⠃⠄⠄⠄⠄⠄⣠⣤⣤⣤⡄⢤⣤⣤⣤⡘⠻⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⡟⠄⠄⣀⣤⣶⣿⣿⣿⣿⣿⣿⣆⢻⣿⣿⣿⡎⠝                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⡏⠄⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡎⣿⣿⣿⣿⠐                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⡏⣲⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢇⣿⣿⣿⡟⣼                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⡠⠜⣿⣿⣿⣿⣟⡛⠿⠿⠿⠿⠟⠃⠾⠿⢟⡋⢶⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣧⣄⠙⢿⣿⣿⣿⣿⣿⣷⣦⡀⢰⣾⣿⣿⡿⢣⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⠂⣷⣶⣬⣭⣭⣭⣭⣵⢰⣴⣤⣤⣶⡾⢐⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣷⡘⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⣿⣿⢃⣼⣿⣿                 {Fore.CYAN}║
-{Fore.CYAN}╠══════════════════════════════════════════════════════════════════╣
-{Fore.CYAN}║                                                                      ║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠄⠄⠄⠄⠄⠄⣀⣠⣤⣤⣤⣄⡀⠄⠄⠄                            {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠄⠄⠄⠄⣴⣿⣿⣿⡿⣿⡿⣗⢌⢳⡀⠄                            {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠄⠄⠄⣼⣿⡇⣿⠹⡸⡹⣷⡹⡎⣧⢳⠄                            {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠄⠄⠄⣿⣿⠱⡙⠰⣢⡱⢹⡇⡷⢸⢸⠄                            {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠄⠄⠄⢿⢸⡈⣉⣤⠠⣴⡄⡇⠁⠄⢸⠄                            {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠄⠄⠄⠸ ⠄⠄⣀⠺⣿⣿⣿⠟⣡⣾⠿⢿⣿⣿⡎⢋⠻⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⣉⣠⣿⣿⡏⣼⣿⠁⠶⠄⣿⣿⡇⡼⠄⠈                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⣈⠻⠿⠟⢁⠘⢿⣷⣶⣾⣿⠟⡰⠃⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⣴⣿⣧⢻⣿⣿⣷⣦⣬⣉⣩⣴⠞⠁⠄⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠘⠿⠿⢸⣿⣿⣿⣿⣿⣿⣿⠁⠄⠄⠄⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⢤⡝⣧⢸⣿⣿⣿⣿⣿⣿⠟⠄⠄⠄⠄⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣜⢧⠻⣀⢿⣿⣿⣿⣿⣿⠏⣾⣧⡀⠄⠄⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠹⢂⣾⣿⠸⣿⣿⣿⣿⡏⣼⣿⣿⣷⠄⠄⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⣿⣿⣿⣧⠹⣿⢻⡿⢰⣿⣿⣿⣿⣇⠄⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⢸⣿⣿⣿⣿⣇⢹⢸⢁⣿⣿⣿⣿⣿⣿⡆⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⢸⣿⣿⣿⣿⣿⣆⠄⣿⣿⣿⣿⣿⣿⣿⡇⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠸⣿⣿⣿⣿⣿⣿⠄⢿⣿⣿⣿⣿⣿⣿⡇⠄⠄                        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⣿⣿⣿⣿⣿⣿⠄⠈⣿⣿⣿⣿⣿⣿⡇⠄                        {Fore.CYAN}║
-{Fore.CYAN}╠══════════════════════════════════════════════════════════════════╣
-{Fore.CYAN}║                                                                      ║
-{Fore.CYAN}║  {Fore.WHITE}:⣿⣿⣿⡇⢩⠘⣴⣿⣥⣤⢦⢁⠄⠉⡄⡇⠛⠛⠛⢛⣭⣾⣿⣿⡏        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⡇⠹⢇⡹⣿⣿⣛⣓⣿⡿⠞⠑⣱⠄⢀⣴⣿⣿⣿⣿⡟        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣧⣸⡄⣿⣪⡻⣿⠿⠋⠄⠄⣀⣀⢡⣿⣿⣿⣿⡿⠋        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠘⣿⣿⣿⣿⣷⣭⣓⡽⡆⡄⢀⣤⣾⣿⣿⣿⣿⣿⡿⠋            {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⢨⡻⡇⣿⢿⣿⣿⣭⡶⣿⣿⣿⣜⢿⡇⡿⠟⠉                {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠸⣷⡅⣫⣾⣿⣿⣿⣷⣙⢿⣿⣿⣷⣦⣚⡀                    {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⢉⣾⡟⠙⠶⠖⠈⢻⣿⣷⣅⢻⣿⣿⣿⣿⣿⣶⣶⡆⠄⣤⡀    {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⢠⣿⣿⣧⣀⣀⣀⣀⣼⣿⣿⣿⡎⢿⣿⣿⣿⣿⣿⣿⣇⠄⠈⠁    {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢇⣎⢿⣿⣿⣿⣿⣿⣿⣿⣶⣶    {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠻⢿⣿⣿⣿⣿⣿⣿⣿⢟⣫⣾⣿⣷⡹⣿⣿⣿⣿⣿⣿⣿⡟    {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠄⠄⢮⣭⣍⡭⣭⡵⣾⣿⣿⣿⡎⣿⣿⣌⠻⠿⠿⠿⠟⠋    {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⠄⠄⠈⠻⣿⣿⣿⣿⣹⣿⣿⣿⡇⣿⣿⡿                    {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⠄⠄⣀⣴⣾⣶⡞⣿⣿⣿⣿⣿⣿⣿⣾⣿⡿⠃                    {Fore.CYAN}║
-{Fore.CYAN}╠══════════════════════════════════════════════════════════════════╣
-{Fore.CYAN}║                                                                      ║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣿⡇⡌⡰⢃⡿⡡⠟⣠⢹⡏⣦⢸⣿⣿⣿⣿⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⡿⢰⠋⡿⢋⣐⡈⣽⠟⢀⢻⢸⡂⣿⣿⣿⣿⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣋⠴⢋⡘⢰⣄⣀⣅⣡⠌⠛⠆⣿⡄⣿⣿⣿⣿⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣶⣁⣐⠄⠹⣟⠯⢿⣷⠾⠁⠥⠃⣹⣿⣿⣿⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⠟⠋⡍⢴⣶⣶⣶⣤⣭⡐⢶⣾⣿⣶⡆⢨⠛⠻⣿⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⢏⣘⣚⣣⣾⣿⣿⣿⣿⣿⣿⢈⣿⣿⣿⣧⣘⠶⢂⠹⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⠃⣾⣿⣿⣿⣿⣿⣿⡿⠿⠿⠿⡀⢿⣿⣿⣿⣿⣿⣿⡇⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⡄⣿⣿⣿⣿⣿⣿⡯⠄⠄⠾⠿⠿⢦⣝⠻⣿⣿⣿⣿⠇⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣷⣜⠿⢿⣿⡿⠟⣴⣾⣿⡇⢰⣾⣦⡹⣷⣮⡙⢟⣩⣾        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣆⢶⣶⣦⢻⣿⣿⣷⢸⣿⣿⣷⣌⠻⡷⣺⣿⣿⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⡜⢿⣿⡎⢿⣿⣿⡬⣿⣿⣿⡏⢦⣔⠻⣿⣿⣿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⣿⠎⠻⣷⡈⢿⣿⡇⢛⣻⣿⣿⢸⣿⣷⠌⡛⢿        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⣿⡏⢰⣷⡙⢷⣌⢻⣿⣿⣿⣿⣿⢸⡿⢡⣾⣿⡶        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⣿⡟⣰⣶⣭⣙⠊⣿⣷⣬⣛⠻⣿⣿⠈⣴⣿⣿⣿⠃        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⡟⠄⠹⢿⣿⣿⣿⣤⠻⠟⠋⠡⠘⠋⢸⣿⣿⡿⠁⠄        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⠁⠄⠄⠄⠙⢻⣿⣿⣇⠄⠄⠄⠄⠄⣺⡿⠛⠄⠄⠄        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⡏⠄⠄⠄⠄⠄⠄⠄⠉⠻⠷⠄⢠⣄⠄⠋⠄⠄⠄⠄.        {Fore.CYAN}║
-{Fore.CYAN}║  {Fore.WHITE}⣿⣿⣿⣿⠄⠄⠄⠄⠄.....                                {Fore.CYAN}║
-{Fore.CYAN}╚══════════════════════════════════════════════════════════════════╝
+{Fore.CYAN}     ███████╗ ██████╗  █████╗  █████╗ ██╗  ██╗
+{Fore.CYAN}     ██╔════╝██╔════╝ ██╔══██╗██╔══██╗╚██╗██╔╝
+{Fore.CYAN}     █████╗  ██║  ███╗███████║███████║ ╚███╔╝ 
+{Fore.CYAN}     ██╔══╝  ██║   ██║██╔══██║██╔══██║ ██╔██╗
+{Fore.CYAN}     ███████╗╚██████╔╝██║  ██║██║  ██║██╔╝ ██╗
+{Fore.CYAN}     ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
+
+{Fore.MAGENTA}         💫 egaaX NglSpam V{VERSION} 💫
+{Fore.GREEN}           Script By : {AUTHOR}
+{Fore.RED}         ⚠️  Gunakan Dengan Bijak! ⚠️
+
+{Fore.WHITE}   ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⠄⠹          {Fore.WHITE}⠄⠄⠄⣴⣿⣿⣿⡿⣿⡿⣗⢌⢳⡀⠄
+{Fore.WHITE}   ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠄⠰⠼⢯⣿⣿⣦⣄⠄⠄          {Fore.WHITE}⠄⠄⠄⣼⣿⡇⣿⠹⡸⡹⣷⡹⡎⣧⢳
+{Fore.WHITE}   ⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄          {Fore.WHITE}⠄⠄⠄⣿⣿⠱⡙⠰⣢⡱⢹⡇⡷⢸⢸
+{Fore.WHITE}   ⣿⣿⣿⣿⣿⣿⠿⣛⣡⣄⣀⠄⠠⢴⣿⣿⡿⣄⣴⣿⣿⣿          {Fore.WHITE}⠄⠄⠄⢿⢸⡈⣉⣤⠠⣴⡄⡇⠁⠄⢸
+{Fore.WHITE}   ⣿⣿⣿⣿⣿⢃⣿⣿⢟⣿⣿⣿⣿⣿⣮⢫⣿⣿⣿⣿⣿⣟          {Fore.WHITE}⠄⠄⠄⠸ ⠄⠄⣀⠺⣿⣿⣿⠟⣡⣾⠿
+{Fore.WHITE}   ⣿⣿⣿⣿⡇⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿          {Fore.WHITE}⠄⠄⣉⣠⣿⣿⡏⣼⣿⠁⠶⠄⣿⣿⡇
+{Fore.WHITE}   ⣭⣍⠛⠿⠄⢰⠋⡉⠹⣿⣿⣿⣿⣿⣿⠙⣿⣿⣿⣿⣿⣿          {Fore.WHITE}⠄⠄⣈⠻⠿⠟⢁⠘⢿⣷⣶⣾⣿⠟⡰
+{Fore.WHITE}   ⠻⣿⡆⠄⣤⠈⢣⣈⣠⣿⣿⣿⣿⣿⠏⣄⠻⣿⣿⣿⣿          {Fore.WHITE}⠄⣴⣿⣧⢻⣿⣿⣷⣦⣬⣉⣩⣴⠞
+{Fore.WHITE}   ⡀⠈⢿⠄⣿⡇⠄⠙⠿⣿⡿⠿⢋⣥⣾⣿⣷⣌⠻⢿⣿          {Fore.WHITE}⠄⠘⠿⠿⢸⣿⣿⣿⣿⣿⣿⣿⠁⠄
+{Fore.WHITE}   ⠛⠳⠄⢠⣿⠇⠄⣷⡑⢶⣶⢿⣿⣿                        {Fore.WHITE}⠄⢤⡝⣧⢸⣿⣿⣿⣿⣿⣿⠟⠄
 {Fore.RESET}
     """)
 
 def music_banner():
     print(f"""
-{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗
-{Fore.MAGENTA}║                   🎵 MUSIC PLAYER 🎵                            ║
-{Fore.MAGENTA}║                                                                      ║
-{Fore.MAGENTA}║         {Fore.CYAN}💿 Download & Play Offline 💿                     {Fore.MAGENTA}║
-{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝
+{Fore.MAGENTA}                   🎵 MUSIC PLAYER 🎵
+{Fore.MAGENTA}         {Fore.CYAN}💿 Download & Play Offline 💿
 {Fore.RESET}
     """)
 
@@ -197,7 +105,7 @@ def clear():
     os.system("clear" if os.name == "posix" else "cls")
 
 # ============================================
-# NGL SPAM
+# NGL SPAM (AUTO DELAY 0.5)
 # ============================================
 
 USER_AGENTS = [
@@ -262,10 +170,7 @@ def send_spam(username, message, retry=0):
 def ngl_spam():
     clear()
     banner()
-    print(f"{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗")
-    print(f"{Fore.MAGENTA}║                    🔥 NGL SPAMMER 🔥                            ║")
-    print(f"{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝")
-    print()
+    print(f"\n{Fore.MAGENTA}                    🔥 NGL SPAMMER 🔥\n")
     
     while True:
         user_input = input(f"{Fore.CYAN}[+] Masukkan Username/Link NGL: {Fore.WHITE}").strip()
@@ -293,17 +198,8 @@ def ngl_spam():
         except:
             print(f"{Fore.RED}[!] Harus angka!")
     
-    while True:
-        try:
-            delay = float(input(f"{Fore.CYAN}[+] Delay (0.1-3 detik): {Fore.WHITE}").strip())
-            if 0.1 <= delay <= 3:
-                break
-            print(f"{Fore.RED}[!] Minimal 0.1, maksimal 3!")
-        except:
-            print(f"{Fore.RED}[!] Harus angka!")
-    
-    min_delay = delay
-    max_delay = min(delay + 0.5, 3.0)
+    min_delay = 0.5
+    max_delay = 1.0
     
     print(f"\n{Fore.RED}[!] PERINGATAN: Ini untuk iseng-iseng!")
     confirm = input(f"{Fore.YELLOW}[?] Lanjut? (y/n): {Fore.WHITE}").lower()
@@ -316,8 +212,8 @@ def ngl_spam():
     
     print(f"\n{Fore.GREEN}[+] Target: @{username}")
     print(f"{Fore.GREEN}[+] Jumlah: {count}")
-    print(f"{Fore.GREEN}[+] Delay: {delay}s")
-    print(f"{Fore.MAGENTA}{'='*70}\n")
+    print(f"{Fore.GREEN}[+] Delay: 0.5 - 1.0 detik (Otomatis)")
+    print()
     
     success_count = 0
     fail_count = 0
@@ -348,17 +244,17 @@ def ngl_spam():
             print()
             time.sleep(1)
     
-    print(f"\n{Fore.MAGENTA}{'='*70}")
+    print(f"\n{Fore.MAGENTA}============================================================")
     print(f"{Fore.CYAN}📊 Hasil Spam:")
     print(f"{Fore.GREEN}✅ Berhasil: {success_count}")
     print(f"{Fore.RED}❌ Gagal: {fail_count}")
     print(f"{Fore.YELLOW}📦 Total: {success_count + fail_count}")
-    print(f"{Fore.MAGENTA}{'='*70}")
+    print(f"{Fore.MAGENTA}============================================================\n")
     
     if success_count > 0:
-        print(f"{Fore.GREEN}\n🔥 Spam Berhasil!")
+        print(f"{Fore.GREEN}🔥 Spam Berhasil!")
     else:
-        print(f"{Fore.RED}\n💀 Gagal Semua!")
+        print(f"{Fore.RED}💀 Gagal Semua!")
     
     press_enter()
 
@@ -523,15 +419,10 @@ def music_player():
     while True:
         clear()
         music_banner()
-        print(f"{Fore.YELLOW}╔══════════════════════════════════════════════════════════════════╗")
-        print(f"{Fore.YELLOW}║                                                                      ║")
-        print(f"{Fore.YELLOW}║  {Fore.GREEN}[1] {Fore.CYAN}🔍 Cari & Download Lagu                         {Fore.YELLOW}║")
-        print(f"{Fore.YELLOW}║  {Fore.GREEN}[2] {Fore.MAGENTA}📜 History Download                                {Fore.YELLOW}║")
-        print(f"{Fore.YELLOW}║  {Fore.GREEN}[3] {Fore.RED}🗑️  Hapus Semua                                {Fore.YELLOW}║")
-        print(f"{Fore.YELLOW}║  {Fore.GREEN}[0] {Fore.RED}🔙 Kembali                                       {Fore.YELLOW}║")
-        print(f"{Fore.YELLOW}║                                                                      ║")
-        print(f"{Fore.YELLOW}╚══════════════════════════════════════════════════════════════════╝")
-        print()
+        print(f"\n{Fore.YELLOW}  [1] {Fore.CYAN}🔍 Cari & Download Lagu")
+        print(f"{Fore.YELLOW}  [2] {Fore.MAGENTA}📜 History Download")
+        print(f"{Fore.YELLOW}  [3] {Fore.RED}🗑️  Hapus Semua")
+        print(f"{Fore.YELLOW}  [0] {Fore.RED}🔙 Kembali\n")
         
         try:
             choice = int(input(f"{Fore.GREEN}[+] Pilih: {Fore.YELLOW}"))
@@ -573,12 +464,12 @@ def music_player():
                 press_enter()
                 continue
             
-            print(f"\n{Fore.CYAN}{'='*70}")
+            print(f"\n{Fore.CYAN}============================================================")
             print(f"{Fore.GREEN}📋 HASIL PENCARIAN:")
-            print(f"{Fore.CYAN}{'='*70}")
+            print(f"{Fore.CYAN}============================================================")
             for i, song in enumerate(results[:10], 1):
                 print(f"{Fore.YELLOW}[{i}] {Fore.WHITE}{song.get('title')[:40]} {Fore.CYAN}- {Fore.MAGENTA}{song.get('artist')} {Fore.GREEN}({song.get('duration')})")
-            print(f"{Fore.CYAN}{'='*70}")
+            print(f"{Fore.CYAN}============================================================")
             print(f"{Fore.YELLOW}[0] Kembali")
             
             try:
@@ -618,12 +509,12 @@ def music_player():
                 press_enter()
                 continue
             
-            print(f"\n{Fore.CYAN}{'='*70}")
+            print(f"\n{Fore.CYAN}============================================================")
             print(f"{Fore.MAGENTA}📜 HISTORY DOWNLOAD:")
-            print(f"{Fore.CYAN}{'='*70}")
+            print(f"{Fore.CYAN}============================================================")
             for i, song in enumerate(history, 1):
                 print(f"{Fore.YELLOW}[{i}] {Fore.WHITE}{song.get('title')[:35]} {Fore.CYAN}- {Fore.MAGENTA}{song.get('artist')} {Fore.GREEN}({song.get('duration')})")
-            print(f"{Fore.CYAN}{'='*70}")
+            print(f"{Fore.CYAN}============================================================")
             print(f"{Fore.YELLOW}[0] Kembali")
             
             try:
@@ -697,12 +588,8 @@ def ambil_balasan_admin():
 def chat_admin():
     clear()
     music_banner()
-    print(f"{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗")
-    print(f"{Fore.MAGENTA}║                   💬 CHAT ADMIN 💬                            ║")
-    print(f"{Fore.MAGENTA}║                                                                      ║")
-    print(f"{Fore.MAGENTA}║         {Fore.CYAN}Hubungi Developer Langsung via Telegram              {Fore.MAGENTA}║")
-    print(f"{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝")
-    print()
+    print(f"\n{Fore.MAGENTA}                   💬 CHAT ADMIN 💬")
+    print(f"{Fore.CYAN}         Hubungi Developer Langsung via Telegram\n")
     
     print(f"{Fore.YELLOW}[!] Pesan akan langsung dikirim ke Developer")
     print(f"{Fore.GREEN}[✓] Developer akan bales via Telegram")
@@ -728,17 +615,14 @@ def chat_admin():
 def cek_balasan():
     clear()
     music_banner()
-    print(f"{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗")
-    print(f"{Fore.MAGENTA}║                   📩 CEK BALASAN 📩                            ║")
-    print(f"{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝")
-    print()
+    print(f"\n{Fore.MAGENTA}                   📩 CEK BALASAN 📩\n")
     
     print(f"{Fore.YELLOW}[+] Cek pesan dari Developer...\n")
     
     balasan = ambil_balasan_admin()
-    print(f"{Fore.CYAN}{'='*50}")
+    print(f"{Fore.CYAN}============================================================")
     print(f"{Fore.WHITE}{balasan}")
-    print(f"{Fore.CYAN}{'='*50}")
+    print(f"{Fore.CYAN}============================================================\n")
     
     press_enter()
 
@@ -750,15 +634,12 @@ def main():
     while True:
         clear()
         banner()
-        print(f"{Fore.MAGENTA}{'='*70}")
-        print(f"{Fore.CYAN}\n📌 Pilih Menu:")
+        print(f"\n{Fore.CYAN}📌 Pilih Menu:")
         print(f"{Fore.GREEN}  [1] 🔥 NGL Spam")
         print(f"{Fore.MAGENTA}  [2] 🎵 Music Player")
         print(f"{Fore.YELLOW}  [3] 💬 Chat Admin")
         print(f"{Fore.GREEN}  [4] 📩 Cek Balasan")
-        print(f"{Fore.RED}  [0] Exit")
-        print(f"{Fore.MAGENTA}{'='*70}")
-        print()
+        print(f"{Fore.RED}  [0] Exit\n")
         
         try:
             choice = int(input(f"{Fore.GREEN}[+] Pilih: {Fore.YELLOW}"))
