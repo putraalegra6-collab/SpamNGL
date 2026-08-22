@@ -3,8 +3,9 @@
 
 """
 ╔══════════════════════════════════════════════════════════════════╗
-║                    egaaX NglSpam V3.0                          ║
+║                    ⚡ egaaX NglSpam V3.0 ⚡                    ║
 ║                   Script By : Alegra Egaa                      ║
+║              🔥 Full Upgrade - Anti Rate Limit 🔥             ║
 ╚══════════════════════════════════════════════════════════════════╝
 """
 
@@ -40,7 +41,7 @@ if not os.path.exists(MUSIC_DIR):
     os.makedirs(MUSIC_DIR)
 
 # ============================================
-# BANNER
+# BANNER KEREN
 # ============================================
 
 def banner():
@@ -58,6 +59,7 @@ def banner():
 {Fore.CYAN}║         {Fore.MAGENTA}💫 egaaX NglSpam V{VERSION} 💫                    {Fore.CYAN}║
 {Fore.CYAN}║           {Fore.GREEN}Script By : {AUTHOR}                            {Fore.CYAN}║
 {Fore.CYAN}║         {Fore.RED}⚠️  Gunakan Dengan Bijak! ⚠️                       {Fore.CYAN}║
+{Fore.CYAN}║         {Fore.CYAN}🔥 Anti Rate Limit Activated 🔥                    {Fore.CYAN}║
 {Fore.CYAN}╚══════════════════════════════════════════════════════════════════╝
 {Fore.RESET}
     """)
@@ -68,6 +70,7 @@ def music_banner():
 {Fore.MAGENTA}║                   🎵 MUSIC PLAYER 🎵                            ║
 {Fore.MAGENTA}║                                                                      ║
 {Fore.MAGENTA}║         {Fore.CYAN}💿 Download & Play Offline 💿                     {Fore.MAGENTA}║
+{Fore.MAGENTA}║         {Fore.GREEN}✅ Full Durasi - Bukan Preview ✅               {Fore.MAGENTA}║
 {Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝
 {Fore.RESET}
     """)
@@ -84,7 +87,7 @@ def loading(text="Memuat"):
         time.sleep(0.05)
     print(f"\r{Fore.GREEN}[✓] {text} Selesai!     ")
 
-def progress(current, total, success=0, fail=0):
+def progress_bar(current, total, success=0, fail=0):
     bar_length = 30
     progress_val = current / total
     filled = int(bar_length * progress_val)
@@ -100,13 +103,18 @@ def clear():
     os.system("clear" if os.name == "posix" else "cls")
 
 # ============================================
-# NGL SPAM FUNCTIONS
+# NGL SPAM FUNCTIONS (SUPER UPGRADE)
 # ============================================
 
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 13; SM-G998B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 13; SM-G998B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0",
 ]
 
 def get_username(input_text):
@@ -122,40 +130,90 @@ def get_username(input_text):
             return match.group(1)
     return None
 
-def send_spam(username, message):
+def send_spam(username, message, retry=0):
+    """Kirim spam dengan retry mechanism"""
     try:
+        # Random Device ID
+        device_id = f"android-{''.join(random.choices('abcdefghijklmnopqrstuvwxyz0123456789', k=16))}"
+        
+        # Random User Agent
+        user_agent = random.choice(USER_AGENTS)
+        
         url = "https://ngl.link/api/submit"
         payload = {
             "username": username,
             "question": message,
-            "deviceId": f"android-{''.join(random.choices('abcdefghijklmnopqrstuvwxyz0123456789', k=16))}"
+            "deviceId": device_id
         }
         headers = {
-            "User-Agent": random.choice(USER_AGENTS),
+            "User-Agent": user_agent,
             "Content-Type": "application/json",
-            "Referer": "https://ngl.link/"
+            "Referer": "https://ngl.link/",
+            "Origin": "https://ngl.link",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "Connection": "keep-alive"
         }
+        
         response = requests.post(url, json=payload, headers=headers, timeout=10)
         
         if response.status_code == 200:
-            return True, "✅ BERHASIL"
+            try:
+                data = response.json()
+                if data.get("status") == "success" or data.get("message") == "Question sent successfully":
+                    return True, "✅ BERHASIL"
+                else:
+                    return False, f"❌ GAGAL: {data.get('message', 'Unknown error')}"
+            except:
+                return True, "✅ BERHASIL"
+                
         elif response.status_code == 429:
-            return False, "⏳ RATE LIMIT"
-        elif response.status_code == 404:
+            if retry < 3:
+                time.sleep(2)  # Tunggu 2 detik sebelum retry
+                return send_spam(username, message, retry + 1)
+            return False, "⏳ RATE LIMIT (udah 3x retry)"
+            
+        elif response.status_code == 400:
             return False, "❌ USERNAME SALAH"
+            
+        elif response.status_code == 404:
+            return False, "❌ USERNAME TIDAK DITEMUKAN"
+            
         else:
             return False, f"❌ ERROR {response.status_code}"
-    except:
-        return False, "❌ GAGAL"
+
+    except requests.exceptions.Timeout:
+        if retry < 3:
+            time.sleep(2)
+            return send_spam(username, message, retry + 1)
+        return False, "❌ TIMEOUT"
+        
+    except requests.exceptions.ConnectionError:
+        if retry < 3:
+            time.sleep(2)
+            return send_spam(username, message, retry + 1)
+        return False, "❌ CONNECTION ERROR"
+        
+    except Exception as e:
+        if retry < 3:
+            time.sleep(2)
+            return send_spam(username, message, retry + 1)
+        return False, f"❌ ERROR: {str(e)[:30]}"
 
 def ngl_spam():
     clear()
     banner()
     print(f"{Fore.MAGENTA}╔══════════════════════════════════════════════════════════════════╗")
     print(f"{Fore.MAGENTA}║                    🔥 NGL SPAMMER 🔥                            ║")
+    print(f"{Fore.MAGENTA}║              {Fore.CYAN}Anti Rate Limit Activated 🔥               {Fore.MAGENTA}║")
     print(f"{Fore.MAGENTA}╚══════════════════════════════════════════════════════════════════╝")
     print()
     
+    # INPUT USERNAME
     while True:
         user_input = input(f"{Fore.CYAN}[+] Masukkan Username/Link NGL: {Fore.WHITE}").strip()
         if not user_input:
@@ -167,12 +225,14 @@ def ngl_spam():
             break
         print(f"{Fore.RED}[!] Format salah! Contoh: username atau https://ngl.link/username")
     
+    # INPUT PESAN
     while True:
         message = input(f"{Fore.CYAN}[+] Pesan Spam: {Fore.WHITE}").strip()
         if message:
             break
         print(f"{Fore.RED}[!] Pesan tidak boleh kosong!")
     
+    # INPUT JUMLAH
     while True:
         try:
             count = int(input(f"{Fore.CYAN}[+] Jumlah Spam (1-1000): {Fore.WHITE}").strip())
@@ -182,6 +242,7 @@ def ngl_spam():
         except:
             print(f"{Fore.RED}[!] Harus angka!")
     
+    # INPUT DELAY
     while True:
         try:
             delay = float(input(f"{Fore.CYAN}[+] Delay (0.1-3 detik): {Fore.WHITE}").strip())
@@ -191,7 +252,7 @@ def ngl_spam():
         except:
             print(f"{Fore.RED}[!] Harus angka!")
     
-    # 🔥 RANDOM DELAY - biar aman dari rate limit
+    # RANDOM DELAY
     min_delay = delay
     max_delay = min(delay + 0.5, 3.0)
     
@@ -207,45 +268,63 @@ def ngl_spam():
     print(f"\n{Fore.GREEN}[+] Target: @{username}")
     print(f"{Fore.GREEN}[+] Jumlah: {count}")
     print(f"{Fore.GREEN}[+] Delay: {delay}s (Random {min_delay:.1f}-{max_delay:.1f}s)")
+    print(f"{Fore.CYAN}[+] Anti Rate Limit: AKTIF")
     print(f"{Fore.MAGENTA}{'='*70}\n")
     
-    success = 0
-    fail = 0
+    success_count = 0
+    fail_count = 0
+    rate_limit_count = 0
     
     for i in range(1, count + 1):
         try:
             status, msg = send_spam(username, message)
+            
             if status:
-                success += 1
+                success_count += 1
                 print(f"{Fore.GREEN}[{i}/{count}] ✅ {msg}")
             else:
-                fail += 1
+                fail_count += 1
+                if "RATE LIMIT" in msg:
+                    rate_limit_count += 1
+                    # Kalo kena rate limit, naikin delay
+                    if rate_limit_count > 3:
+                        max_delay = min(max_delay + 0.3, 3.0)
+                        print(f"{Fore.YELLOW}[!] Deteksi rate limit! Naikin delay ke {max_delay:.1f}s")
                 print(f"{Fore.RED}[{i}/{count}] {msg}")
             
-            progress(i, count, success, fail)
+            progress_bar(i, count, success_count, fail_count)
             print()
             
             if i < count:
-                # 🔥 PAKE RANDOM DELAY
-                time.sleep(random.uniform(min_delay, max_delay))
+                # Adaptive delay
+                current_delay = random.uniform(min_delay, max_delay)
+                if rate_limit_count > 3:
+                    current_delay = random.uniform(min_delay + 0.3, max_delay)
+                time.sleep(current_delay)
                 
         except KeyboardInterrupt:
             print(f"\n{Fore.YELLOW}[!] Dihentikan oleh user!")
             break
         except Exception as e:
-            fail += 1
-            print(f"{Fore.RED}[{i}/{count}] ❌ {str(e)[:30]}")
+            fail_count += 1
+            print(f"{Fore.RED}[{i}/{count}] ❌ Error: {str(e)[:30]}")
+            progress_bar(i, count, success_count, fail_count)
+            print()
+            time.sleep(1)
     
     print(f"\n{Fore.MAGENTA}{'='*70}")
-    print(f"{Fore.GREEN}✅ Berhasil: {success}")
-    print(f"{Fore.RED}❌ Gagal: {fail}")
-    print(f"{Fore.YELLOW}📦 Total: {success + fail}")
+    print(f"{Fore.CYAN}📊 Hasil Spam:")
+    print(f"{Fore.GREEN}✅ Berhasil: {success_count}")
+    print(f"{Fore.RED}❌ Gagal: {fail_count}")
+    print(f"{Fore.YELLOW}📦 Total: {success_count + fail_count}")
+    if rate_limit_count > 0:
+        print(f"{Fore.YELLOW}⚠️ Rate Limit Terdeteksi: {rate_limit_count}x")
     print(f"{Fore.MAGENTA}{'='*70}")
     
-    if success > 0:
+    if success_count > 0:
         print(f"{Fore.GREEN}\n🔥 Spam Berhasil!")
     else:
-        print(f"{Fore.RED}\n💀 Gagal Semua!")
+        print(f"{Fore.RED}\n💀 Gagal Semua! Cek Username atau Coba Lagi!")
     
     press_enter()
 
@@ -643,9 +722,9 @@ def main():
         banner()
         print(f"{Fore.MAGENTA}{'='*70}")
         print(f"{Fore.CYAN}\n📌 Pilih Menu:")
-        print(f"{Fore.GREEN}  [1] 🔥 NGL Spam")
-        print(f"{Fore.MAGENTA}  [2] 🎵 Music Player")
-        print(f"{Fore.YELLOW}  [3] 💬 Chat Admin (Hubungi Developer)")
+        print(f"{Fore.GREEN}  [1] 🔥 NGL Spam {Fore.CYAN}(Anti Rate Limit)")
+        print(f"{Fore.MAGENTA}  [2] 🎵 Music Player {Fore.CYAN}(Full Durasi)")
+        print(f"{Fore.YELLOW}  [3] 💬 Chat Admin {Fore.CYAN}(Hubungi Developer)")
         print(f"{Fore.GREEN}  [4] 📩 Cek Balasan Admin")
         print(f"{Fore.RED}  [0] Exit")
         print(f"{Fore.MAGENTA}{'='*70}")
