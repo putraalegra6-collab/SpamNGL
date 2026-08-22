@@ -9,23 +9,23 @@
   <img src="https://img.shields.io/badge/Python-3.x-green?style=for-the-badge&logo=python">
   <img src="https://img.shields.io/badge/Platform-Termux-orange?style=for-the-badge&logo=linux">
   <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Music-Player-FF69B4?style=for-the-badge&logo=spotify">
   <img src="https://img.shields.io/badge/Size-55KB-red?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Chat-Feature-FF69B4?style=for-the-badge&logo=telegram">
 </p>
 
 ---
 
 ## 📌 Tentang
 
-**egaaX NglSpam** adalah tools multi-fungsi untuk Termux yang menggabungkan:
+**egaaX NglSpam** adalah tools multi-fungsi untuk Termux yang menggabungkan 5 fitur dalam satu script:
 
 | Fitur | Keterangan |
 |-------|------------|
 | 🔥 **NGL Spammer** | Kirim pesan spam massal ke akun NGL |
 | 🎵 **Music Player** | Cari, download, & putar lagu offline |
-| 📜 **History Music** | Riwayat download tersimpan otomatis |
-| 🎨 **Animasi Keren** | Spinner, progress bar, warna dinamis |
-| 💾 **Offline Play** | Putar lagu tanpa koneksi internet |
+| 💬 **Chat Admin** | Hubungi developer langsung via Telegram |
+| 🌐 **Chat Global** | Komunitas pengguna SpamNGL |
+| 📩 **Cek Balasan** | Lihat balasan dari developer |
 
 > ⚠️ **Disclaimer:** Tools ini untuk **edukasi & iseng-iseng**. Gunakan dengan bijak!
 
@@ -85,24 +85,15 @@ cd SpamNGL
 STEP 7 - Jalankan Tools
 
 ```bash
-python SpamNGL.py
+python SpamNGL
 ```
 
 ---
 
 ⚡ Cara Run (Setelah Install)
 
-Cukup 2 langkah:
-
 ```bash
-cd SpamNGL
-python SpamNGL.py
-```
-
-Atau langsung satu baris:
-
-```bash
-cd SpamNGL && python SpamNGL.py
+cd SpamNGL && python SpamNGL
 ```
 
 ---
@@ -112,7 +103,7 @@ cd SpamNGL && python SpamNGL.py
 ```bash
 cd SpamNGL
 git pull
-python SpamNGL.py
+python SpamNGL
 ```
 
 ---
@@ -120,16 +111,7 @@ python SpamNGL.py
 💀 Reset Total (Install Ulang)
 
 ```bash
-rm -rf SpamNGL
-git clone https://github.com/putraalegra6-collab/SpamNGL.git
-cd SpamNGL
-python SpamNGL.py
-```
-
-Atau satu baris:
-
-```bash
-rm -rf SpamNGL && git clone https://github.com/putraalegra6-collab/SpamNGL.git && cd SpamNGL && python SpamNGL.py
+rm -rf SpamNGL && git clone https://github.com/putraalegra6-collab/SpamNGL.git && cd SpamNGL && python SpamNGL
 ```
 
 ---
@@ -156,6 +138,23 @@ Langkah Aksi
 5 Tunggu download selesai
 6 Pilih y untuk putar sekarang
 
+💬 Mode Chat
+
+Langkah Aksi
+1 Pilih menu [3] Chat Admin (Hubungi Developer)
+2 Masukkan nama dan pesan
+3 Tunggu balasan dari developer
+4 Pilih [5] Cek Balasan untuk lihat jawaban
+
+🌐 Mode Chat Global
+
+Langkah Aksi
+1 Pilih menu [4] Chat Global
+2 Lihat pesan terbaru dari komunitas
+3 Pilih [1] Kirim Pesan
+4 Masukkan nama dan pesan
+5 Pesan akan muncul untuk semua pengguna
+
 ---
 
 📸 Tampilan Menu
@@ -180,6 +179,9 @@ Langkah Aksi
 📌 Pilih Menu:
   [1] 🔥 NGL Spam
   [2] 🎵 Music Player
+  [3] 💬 Chat Admin (Hubungi Developer)
+  [4] 🌐 Chat Global (Komunitas)
+  [5] 📩 Cek Balasan Admin
   [0] Exit
 ======================================================================
 ```
@@ -195,6 +197,8 @@ Permission denied termux-setup-storage
 No such file or directory Pastikan di folder SpamNGL
 Not a directory rm -rf SpamNGL lalu clone ulang
 Already exists Folder sudah ada, langsung cd SpamNGL
+Chat tidak terkirim Cek koneksi internet dan token bot
+Music tidak bisa diputar Install mpv: pkg install mpv -y
 
 ---
 
@@ -202,11 +206,23 @@ Already exists Folder sudah ada, langsung cd SpamNGL
 
 ```
 SpamNGL/
-├── SpamNGL.py            # Script utama
+├── SpamNGL                # Script utama
 ├── README.md             # Dokumentasi
 └── music_downloads/      # Folder lagu (auto dibuat)
     └── history.json      # Riwayat download (auto dibuat)
 ```
+
+---
+
+🆕 Fitur Terbaru (v3.0)
+
+Fitur Keterangan
+✅ Chat Admin Hubungi developer langsung via Telegram
+✅ Chat Global Komunitas pengguna SpamNGL
+✅ Cek Balasan Lihat balasan dari developer
+✅ Full Durasi Download musik full, bukan preview
+✅ Auto Install Cek & install yt-dlp/mpv otomatis
+✅ History Music Riwayat download tersimpan
 
 ---
 
