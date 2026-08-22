@@ -19,7 +19,6 @@ import subprocess
 from datetime import datetime
 from colorama import init, Fore, Style, Back
 
-# INIT COLORAMA
 init(autoreset=True)
 
 # ============================================
@@ -31,16 +30,14 @@ AUTHOR = "Alegra Egaa"
 MUSIC_DIR = os.path.join(os.getcwd(), "music_downloads")
 HISTORY_FILE = os.path.join(MUSIC_DIR, "history.json")
 
-# KONFIGURASI CHAT ADMIN
 TELEGRAM_TOKEN = "8818093055:AAH-lPbkSWASN2KyB2a2fUkffiiaKnSLagE"
 ADMIN_CHAT_ID = "6943146350"
 
-# BUAT FOLDER
 if not os.path.exists(MUSIC_DIR):
     os.makedirs(MUSIC_DIR)
 
 # ============================================
-# BANNER SIMPLE (1 AJA)
+# BANNER (1 AJA - RAPI)
 # ============================================
 
 def banner():
@@ -66,14 +63,7 @@ def banner():
 {Fore.WHITE}   ⣭⣍⠛⠿⠄⢰⠋⡉⠹⣿⣿⣿⣿⣿⣿⠙⣿⣿⣿⣿⣿⣿          {Fore.WHITE}⠄⠄⣈⠻⠿⠟⢁⠘⢿⣷⣶⣾⣿⠟⡰
 {Fore.WHITE}   ⠻⣿⡆⠄⣤⠈⢣⣈⣠⣿⣿⣿⣿⣿⠏⣄⠻⣿⣿⣿⣿          {Fore.WHITE}⠄⣴⣿⣧⢻⣿⣿⣷⣦⣬⣉⣩⣴⠞
 {Fore.WHITE}   ⡀⠈⢿⠄⣿⡇⠄⠙⠿⣿⡿⠿⢋⣥⣾⣿⣷⣌⠻⢿⣿          {Fore.WHITE}⠄⠘⠿⠿⢸⣿⣿⣿⣿⣿⣿⣿⠁⠄
-{Fore.WHITE}   ⠛⠳⠄⢠⣿⠇⠄⣷⡑⢶⣶⢿⣿⣿                        {Fore.WHITE}⠄⢤⡝⣧⢸⣿⣿⣿⣿⣿⣿⠟⠄
-{Fore.RESET}
-    """)
-
-def music_banner():
-    print(f"""
-{Fore.MAGENTA}                   🎵 MUSIC PLAYER 🎵
-{Fore.MAGENTA}         {Fore.CYAN}💿 Download & Play Offline 💿
+{Fore.WHITE}   ⠛⠳⠄⢠⣿⠇⠄⣷⡑⢶⣶⢿⣿⣿                  {Fore.WHITE}⠄⢤⡝⣧⢸⣿⣿⣿⣿⣿⣿⠟⠄
 {Fore.RESET}
     """)
 
@@ -105,7 +95,7 @@ def clear():
     os.system("clear" if os.name == "posix" else "cls")
 
 # ============================================
-# NGL SPAM (AUTO DELAY 0.5)
+# NGL SPAM
 # ============================================
 
 USER_AGENTS = [
@@ -418,7 +408,10 @@ def load_history():
 def music_player():
     while True:
         clear()
-        music_banner()
+        print(f"""
+{Fore.MAGENTA}                   🎵 MUSIC PLAYER 🎵
+{Fore.MAGENTA}         {Fore.CYAN}💿 Download & Play Offline 💿
+""")
         print(f"\n{Fore.YELLOW}  [1] {Fore.CYAN}🔍 Cari & Download Lagu")
         print(f"{Fore.YELLOW}  [2] {Fore.MAGENTA}📜 History Download")
         print(f"{Fore.YELLOW}  [3] {Fore.RED}🗑️  Hapus Semua")
@@ -587,7 +580,10 @@ def ambil_balasan_admin():
 
 def chat_admin():
     clear()
-    music_banner()
+    print(f"""
+{Fore.MAGENTA}                   🎵 MUSIC PLAYER 🎵
+{Fore.MAGENTA}         {Fore.CYAN}💿 Download & Play Offline 💿
+""")
     print(f"\n{Fore.MAGENTA}                   💬 CHAT ADMIN 💬")
     print(f"{Fore.CYAN}         Hubungi Developer Langsung via Telegram\n")
     
@@ -614,7 +610,10 @@ def chat_admin():
 
 def cek_balasan():
     clear()
-    music_banner()
+    print(f"""
+{Fore.MAGENTA}                   🎵 MUSIC PLAYER 🎵
+{Fore.MAGENTA}         {Fore.CYAN}💿 Download & Play Offline 💿
+""")
     print(f"\n{Fore.MAGENTA}                   📩 CEK BALASAN 📩\n")
     
     print(f"{Fore.YELLOW}[+] Cek pesan dari Developer...\n")
